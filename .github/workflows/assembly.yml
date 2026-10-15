@@ -226,7 +226,7 @@ jobs:
           echo "All vehicles assembled and invoices correctly excluded!"
 
   quality_report:
-    needs: [test_car, test_motorbike, test_truck]
+    needs: [test_car, test_motorbike, test_truck, build_car]
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
