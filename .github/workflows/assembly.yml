@@ -38,6 +38,8 @@ jobs:
     container: ubuntu:22.04
     env:
       ASSEMBLY_PLANT: "Factory B"
+    outputs:
+      car_tag: ${{ steps.tag_step.outputs.car_tag }}
     steps:
       - name: Print assembly plant
         run: |
@@ -163,6 +165,11 @@ jobs:
           grep "Engine" build/car.txt
           grep "car" build/spare_parts_car.txt
           echo "Car tests passed!"
+          
+      - name: Print car tag from build job
+        run: |
+          echo "Testing build: ${{ needs.build_car.outputs.car_tag }}"
+
 
   test_motorbike:
     needs: build_motorbike
