@@ -74,6 +74,13 @@ jobs:
             build/car.txt
             build/spare_parts_car.txt
           retention-days: 1
+     
+      - name: Set a shell variable
+        run: export FOO=hello
+
+      - name: Echo it
+        run: echo "FOO is [$FOO]"
+
 
   build_motorbike:
     needs: start
