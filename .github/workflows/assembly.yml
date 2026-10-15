@@ -58,6 +58,14 @@ jobs:
       - name: Create invoice
         run: echo "Invoice for car" > build/invoice_car.txt
 
+      - name: Generate build tag
+        id: tag_step
+        run: echo "car_tag=car-build-${{ github.run_number }}" >> $GITHUB_OUTPUT
+
+      - name: Print build tag
+        run: |
+          echo "Car build tag: ${{ steps.tag_step.outputs.car_tag }}"
+
       - name: Upload car artifact
         uses: actions/upload-artifact@v6
         with:
